@@ -53,14 +53,8 @@ namespace SocialNetwork.BLL.Services
                 return null;
             }
 
-            var friendship = _uow.FriendshipRepository.Get((int)item.FriendshipId);
-            if (friendship == null)
-            {
-                return null;
-            }
-
             var friendshipDto = _mapper.Map<Friendship>(item);
-            friendshipDto = _uow.FriendshipRepository.Create(friendship);
+            friendshipDto = _uow.FriendshipRepository.Create(friendshipDto);
 
             _uow.Save();
 

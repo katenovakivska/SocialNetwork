@@ -50,14 +50,8 @@ namespace SocialNetwork.BLL.Services
                 return null;
             }
 
-            var comment = _uow.CommentRepository.Get((int)item.CommentId);
-            if (comment == null)
-            {
-                return null;
-            }
-
             var commentDto = _mapper.Map<Comment>(item);
-            commentDto = _uow.CommentRepository.Create(comment);
+            commentDto = _uow.CommentRepository.Create(commentDto);
 
             _uow.Save();
 

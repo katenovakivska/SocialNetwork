@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Zh1wvg3JvSt9JoNwPTHu4Mjqtr66QQFJfkT7W9VG1wsFv68+O7xb/W8udrVRwEqDaTbYNhO9T329X477VCOooQ==",
+  "dgSpecHash": "9S7uOZ0RnBzv/FvLa6Pc5XcpI6olh2AHbGEX8rT6ABeH+n9PXaWz7BU9pR0QYmo/WAVQmX2aib8MFjo58y0Zwg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Katya\\Desktop\\lot\\SocialNetwork.WebApi\\SocialNetwork.BLL\\SocialNetwork.BLL.csproj",
+  "projectFilePath": "C:\\Users\\Katya\\Desktop\\SocialNetwork.WebApi\\SocialNetwork.BLL\\SocialNetwork.BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Katya\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\Katya\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",

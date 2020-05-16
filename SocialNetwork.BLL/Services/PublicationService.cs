@@ -98,6 +98,22 @@ namespace SocialNetwork.BLL.Services
             return _mapper.Map<PublicationDTO>(publication);
         }
 
+        public PublicationDTO AddPhoto(int id, byte[] item)
+        {
+            var publication = _uow.PublicationRepository.Get(id);
+            if (publication == null)
+            {
+                return null;
+            }
+
+            publication.Photo = item;
+            publication = _mapper.Map<Publication>(publication);
+            publication = _uow.PublicationRepository.Update(publication);
+            _uow.Save();
+
+            return _mapper.Map<PublicationDTO>(publication);
+        }
+
         public PublicationDTO Delete(int id)
         {
             var publication = _uow.PublicationRepository.Delete(id);

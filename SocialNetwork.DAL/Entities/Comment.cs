@@ -10,6 +10,7 @@ namespace SocialNetwork.DAL.Entities
         public string CommentText { get; set; }
         public DateTime CommentDate { get; set; }
         public string UserName { get; set; }
+        public int PublicationId { get; set; }
         public virtual Publication Publication { get; set; }
     }
 }

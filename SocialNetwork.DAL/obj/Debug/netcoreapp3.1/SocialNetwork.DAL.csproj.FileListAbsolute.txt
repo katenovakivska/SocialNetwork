@@ -22,3 +22,15 @@ C:\Users\Katya\Desktop\lot\SocialNetwork.WebApi\SocialNetwork.DAL\obj\Debug\netc
 C:\Users\Katya\Desktop\lot\SocialNetwork.WebApi\SocialNetwork.DAL\obj\Debug\netcoreapp3.1\SocialNetwork.DAL.dll
 C:\Users\Katya\Desktop\lot\SocialNetwork.WebApi\SocialNetwork.DAL\obj\Debug\netcoreapp3.1\SocialNetwork.DAL.pdb
 C:\Users\Katya\Desktop\lot\SocialNetwork.WebApi\SocialNetwork.DAL\obj\Debug\netcoreapp3.1\SocialNetwork.DAL.genruntimeconfig.cache
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.DAL\bin\Debug\netcoreapp3.1\SocialNetwork.DAL.deps.json
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.DAL\bin\Debug\netcoreapp3.1\SocialNetwork.DAL.runtimeconfig.json
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.DAL\bin\Debug\netcoreapp3.1\SocialNetwork.DAL.runtimeconfig.dev.json
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.DAL\bin\Debug\netcoreapp3.1\SocialNetwork.DAL.dll
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.DAL\bin\Debug\netcoreapp3.1\SocialNetwork.DAL.pdb
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.DAL\obj\Debug\netcoreapp3.1\SocialNetwork.DAL.csprojAssemblyReference.cache
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.DAL\obj\Debug\netcoreapp3.1\SocialNetwork.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.DAL\obj\Debug\netcoreapp3.1\SocialNetwork.DAL.AssemblyInfoInputs.cache
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.DAL\obj\Debug\netcoreapp3.1\SocialNetwork.DAL.AssemblyInfo.cs
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.DAL\obj\Debug\netcoreapp3.1\SocialNetwork.DAL.dll
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.DAL\obj\Debug\netcoreapp3.1\SocialNetwork.DAL.pdb
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.DAL\obj\Debug\netcoreapp3.1\SocialNetwork.DAL.genruntimeconfig.cache

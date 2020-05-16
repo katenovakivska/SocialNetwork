@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wibhApFTUNAN/6N4AAl4n3p97fj83KQwg0gmec41EyAdUj3y0O7aKoCN4ClF1YAcj2eB0FFAxG+RUqJccC6PsQ==",
+  "dgSpecHash": "UgkZ3bGPSx2hF6myInyJ3CZda4udzT6/JkPaOAKOhcTHhJtcSNOJN2qkyGXF++ZapkWcqP1Ji5wHk1Vzc+R59Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Katya\\Desktop\\lot\\SocialNetwork.WebApi\\SocialNetwork.WebApi\\SocialNetwork.PL.csproj",
+  "projectFilePath": "C:\\Users\\Katya\\Desktop\\SocialNetwork.WebApi\\SocialNetwork.WebApi\\SocialNetwork.PL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Katya\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\Katya\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -34,7 +35,29 @@ namespace SocialNetwork.PL.Controllers
 
             publicationDtos = _publicationService.GetAllUserPublications(User.Identity.Name);
 
-            return Ok(_mapper.Map<IEnumerable<PublicationViewModel>>(publicationDtos));
+            List<PublicationViewModel> publications = new List<PublicationViewModel>();
+
+            foreach (var p in publicationDtos)
+            {
+                if (p.Photo != null)
+                {
+                    string imageBase64Data = Convert.ToBase64String(p.Photo);
+                    string imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
+                    PublicationViewModel publication = new PublicationViewModel();
+                    publication.PublicationId = p.PublicationId;
+                    publication.PublicationDate = p.PublicationDate;
+                    publication.PublicationText = p.PublicationText;
+                    publication.UserName = p.UserName;
+                    publication.Photo = imageDataURL;
+                    publication.Likes = _mapper.Map<ICollection<LikeViewModel>>(p.Likes);
+                    publication.Comments = _mapper.Map<ICollection<CommentViewModel>>(p.Comments);
+
+                    publications.Add(publication);
+                }
+
+            }
+
+            return Ok(_mapper.Map<List<PublicationViewModel>>(publications));
         }
         //public IActionResult GetAllPublications(int? pageNumber, int? pageElementCount)
         //{
@@ -66,12 +89,34 @@ namespace SocialNetwork.PL.Controllers
         }
 
         [Authorize]
+        [HttpPost("{id}")]
+        public IActionResult AddPublicationPhoto(int id)
+        {
+            var photo = Request.Form.Files[0];
+            // Person person = new Person { Name = pvm.Name };
+            
+            byte[] imageData = null;
+            // считываем переданный файл в массив байтов
+            using (var binaryReader = new BinaryReader(photo.OpenReadStream()))
+            {
+                imageData = binaryReader.ReadBytes((int)photo.Length);
+            }
+            // установка массива байтов
+
+            var publicationDto = _publicationService.AddPhoto(id,imageData);
+
+            return Ok(_mapper.Map<PublicationViewModel>(publicationDto));
+        }
+
+        [Authorize]
         [HttpPost]
         public IActionResult CreatePublication([FromBody] PublicationViewModel publicationViewModel)
         {
             var publicationDto = _mapper.Map<PublicationDTO>(publicationViewModel);
             publicationDto.UserName = User.Identity.Name;
             publicationDto.PublicationDate = DateTime.Now;
+            publicationDto.PublicationText = publicationViewModel.PublicationText;
+
             publicationDto = _publicationService.Create(publicationDto);
 
             if (publicationDto == null)
@@ -79,9 +124,9 @@ namespace SocialNetwork.PL.Controllers
                 return BadRequest();
             }
 
-            return Created(Request.Path + "/" + publicationDto.PublicationId, _mapper.Map<PublicationViewModel>(publicationDto));
+            return Ok(_mapper.Map<PublicationViewModel>(publicationDto));
         }
-
+        
         [Authorize]
         [HttpPut("{id}")]
         public IActionResult UpdatePublication(int id, [FromBody] PublicationViewModel publicationViewModel)
@@ -97,14 +142,14 @@ namespace SocialNetwork.PL.Controllers
             return Ok(_mapper.Map<PublicationViewModel>(publicationDto));
         }
 
-       // [Authorize]
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult DeletePublicationById(int id)
         {
-            //if (!IsUserOwnLot(id, User.Identity.Name))
-            //{
-            //    return Forbid();
-            //}
+            if (!IsUserOwner(id, User.Identity.Name))
+            {
+                return Forbid();
+            }
 
             var publicationDto = _publicationService.Delete(id);
 
@@ -116,16 +161,16 @@ namespace SocialNetwork.PL.Controllers
             return Ok(_mapper.Map<PublicationViewModel>(publicationDto));
         }
 
-        //private bool IsUserOwnLot(int lotId, string userName)
-        //{
-        //    var lotDto = _lotService.Get(lotId);
+        private bool IsUserOwner(int publicationId, string userName)
+        {
+            var publicationDto = _publicationService.Get(publicationId);
 
-        //    if (lotDto == null)
-        //    {
-        //        return false;
-        //    }
+            if (publicationDto == null)
+            {
+                return false;
+            }
 
-        //    return lotDto.UserName == userName;
-        //}
+            return publicationDto.UserName == userName;
+        }
     }
 }

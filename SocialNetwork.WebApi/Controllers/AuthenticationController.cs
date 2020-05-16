@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Linq;
@@ -123,6 +125,31 @@ namespace SocialNetwork.PL.Controllers
             }
 
             return NoContent();
+        }
+
+        [Authorize]
+        [HttpGet("users")]
+        public IActionResult GetAllUsers()
+        {
+            var users = _userManager.Users.Where(x => x.UserName != User.Identity.Name);
+
+            List<UserViewModel> usersViewModel = new List<UserViewModel>();
+
+            foreach(var u in users)
+            {
+                UserViewModel user = new UserViewModel();
+                user.UserName = u.UserName;
+                user.Email = u.Email;
+                user.PhoneNumber = u.PhoneNumber;
+                if (u.Avatar != null)
+                {
+                    string imageBase64Data = Convert.ToBase64String(u.Avatar);
+                    string imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
+                    user.Avatar = imageDataURL;
+                }
+                usersViewModel.Add(user);
+            }
+            return Ok(users);
         }
 
     }

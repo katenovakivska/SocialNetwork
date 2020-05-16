@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Q2IrbZCTAsqGWhy1MuK0Hj84HUG2IqZGSssY3WxMfU/qSYzhSFlED3DUn+RIyFPHLw75503TEdlEzX6GkFk8lw==",
+  "dgSpecHash": "NuKUxBVds3iVHugIYgI2AD/Kp5hxF7gyKbMp4PyBuoWhiojtDnbBUOVi5kDDD+m1PZ1zu5xkN51+1kBdZUEkzg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Katya\\Desktop\\lot\\SocialNetwork.WebApi\\SocialNetwork.DAL\\SocialNetwork.DAL.csproj",
+  "projectFilePath": "C:\\Users\\Katya\\Desktop\\SocialNetwork.WebApi\\SocialNetwork.DAL\\SocialNetwork.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Katya\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.3\\microsoft.aspnetcore.cryptography.internal.3.1.3.nupkg.sha512",
     "C:\\Users\\Katya\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.3\\microsoft.aspnetcore.cryptography.keyderivation.3.1.3.nupkg.sha512",

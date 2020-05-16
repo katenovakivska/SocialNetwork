@@ -231,7 +231,7 @@ namespace SocialNetwork.DAL.Migrations
                     b.Property<string>("CommentText")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PublicationId")
+                    b.Property<int>("PublicationId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
@@ -272,7 +272,7 @@ namespace SocialNetwork.DAL.Migrations
                     b.Property<DateTime>("LikeDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PublicationId")
+                    b.Property<int>("PublicationId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
@@ -316,8 +316,8 @@ namespace SocialNetwork.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Photo")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("Photo")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<DateTime>("PublicationDate")
                         .HasColumnType("datetime2");
@@ -410,7 +410,8 @@ namespace SocialNetwork.DAL.Migrations
                     b.HasOne("SocialNetwork.DAL.Entities.Publication", "Publication")
                         .WithMany("Comments")
                         .HasForeignKey("PublicationId")
-                        .OnDelete(DeleteBehavior.ClientCascade);
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SocialNetwork.DAL.Entities.Like", b =>
@@ -418,7 +419,8 @@ namespace SocialNetwork.DAL.Migrations
                     b.HasOne("SocialNetwork.DAL.Entities.Publication", "Publication")
                         .WithMany("Likes")
                         .HasForeignKey("PublicationId")
-                        .OnDelete(DeleteBehavior.ClientCascade);
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

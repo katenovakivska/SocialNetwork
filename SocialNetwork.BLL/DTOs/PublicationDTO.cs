@@ -8,7 +8,7 @@ namespace SocialNetwork.BLL.DTOs
     {
         public int PublicationId { get; set; }
         public string PublicationText { get; set; }
-        public string Photo { get; set; }
+        public byte[] Photo { get; set; }
         public DateTime PublicationDate { get; set; }
         public string UserName { get; set; }
         public ICollection<CommentDTO> Comments { get; set; }

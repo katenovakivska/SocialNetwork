@@ -50,14 +50,8 @@ namespace SocialNetwork.BLL.Services
                 return null;
             }
 
-            var like = _uow.LikeRepository.Get((int)item.LikeId);
-            if (like == null)
-            {
-                return null;
-            }
-
             var likeDto = _mapper.Map<Like>(item);
-            likeDto = _uow.LikeRepository.Create(like);
+            likeDto = _uow.LikeRepository.Create(likeDto);
 
             _uow.Save();
 

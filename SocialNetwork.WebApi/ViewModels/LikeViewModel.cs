@@ -10,6 +10,7 @@ namespace SocialNetwork.PL.ViewModels
         public int LikeId { get; set; }
         public DateTime LikeDate { get; set; }
         public string UserName { get; set; }
+        public int PublicationId { get; set; }
         public PublicationViewModel Publication { get; set; }
     }
 }

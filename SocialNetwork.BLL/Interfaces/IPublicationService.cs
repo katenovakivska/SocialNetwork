@@ -7,5 +7,6 @@ namespace SocialNetwork.BLL.Interfaces
     {
         IEnumerable<PublicationDTO> GetPage(int pageNumber, int pageElementCount);
         IEnumerable<PublicationDTO> GetAllUserPublications(string userName);
+        PublicationDTO AddPhoto(int id, byte[] item);
     }
 }

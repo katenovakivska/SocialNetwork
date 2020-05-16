@@ -50,14 +50,9 @@ namespace SocialNetwork.BLL.Services
                     return null;
                 }
 
-                var request = _uow.RequestRepository.Get((int)item.RequestId);
-                if (request == null)
-                {
-                    return null;
-                }
-
+                
                 var requestDto = _mapper.Map<Request>(item);
-                requestDto = _uow.RequestRepository.Create(request);
+                requestDto = _uow.RequestRepository.Create(requestDto);
 
                 _uow.Save();
 
@@ -66,18 +61,19 @@ namespace SocialNetwork.BLL.Services
 
             public RequestDTO Update(int id, RequestDTO item)
             {
-                if (!RequestValidator.IsRequestValid(item))
+            var request = _uow.RequestRepository.Get(id);
+            if (request == null)
+            {
+                return null;
+            }
+
+            if (!RequestValidator.IsRequestValid(item))
                 {
                     return null;
                 }
 
-                if (_uow.RequestRepository.Get((int)item.RequestId) == null)
-                {
-                    return null;
-                }
-
-                item.RequestId = id;
-                var request = _mapper.Map<Request>(item);
+                request.Status = item.Status;
+                request = _mapper.Map<Request>(request);
                 request = _uow.RequestRepository.Update(request);
                 _uow.Save();
 

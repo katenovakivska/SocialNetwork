@@ -22,3 +22,15 @@ C:\Users\Katya\Desktop\lot\SocialNetwork.WebApi\SocialNetwork.BLL\obj\Debug\netc
 C:\Users\Katya\Desktop\lot\SocialNetwork.WebApi\SocialNetwork.BLL\obj\Debug\netcoreapp3.1\SocialNetwork.BLL.csproj.CopyComplete
 C:\Users\Katya\Desktop\lot\SocialNetwork.WebApi\SocialNetwork.BLL\obj\Debug\netcoreapp3.1\SocialNetwork.BLL.dll
 C:\Users\Katya\Desktop\lot\SocialNetwork.WebApi\SocialNetwork.BLL\obj\Debug\netcoreapp3.1\SocialNetwork.BLL.pdb
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.BLL\bin\Debug\netcoreapp3.1\SocialNetwork.BLL.deps.json
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.BLL\bin\Debug\netcoreapp3.1\SocialNetwork.BLL.dll
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.BLL\bin\Debug\netcoreapp3.1\SocialNetwork.BLL.pdb
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.BLL\bin\Debug\netcoreapp3.1\SocialNetwork.DAL.dll
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.BLL\bin\Debug\netcoreapp3.1\SocialNetwork.DAL.pdb
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.BLL\obj\Debug\netcoreapp3.1\SocialNetwork.BLL.csprojAssemblyReference.cache
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.BLL\obj\Debug\netcoreapp3.1\SocialNetwork.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.BLL\obj\Debug\netcoreapp3.1\SocialNetwork.BLL.AssemblyInfoInputs.cache
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.BLL\obj\Debug\netcoreapp3.1\SocialNetwork.BLL.AssemblyInfo.cs
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.BLL\obj\Debug\netcoreapp3.1\SocialNetwork.BLL.csproj.CopyComplete
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.BLL\obj\Debug\netcoreapp3.1\SocialNetwork.BLL.dll
+C:\Users\Katya\Desktop\SocialNetwork.WebApi\SocialNetwork.BLL\obj\Debug\netcoreapp3.1\SocialNetwork.BLL.pdb

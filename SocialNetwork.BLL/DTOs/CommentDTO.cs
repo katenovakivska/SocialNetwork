@@ -8,6 +8,7 @@ namespace SocialNetwork.BLL.DTOs
         public string CommentText { get; set; }
         public DateTime CommentDate { get; set; }
         public string UserName { get; set; }
+        public int PublicationId { get; set; }
         public virtual PublicationDTO Publication { get; set; }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Katya\\Desktop\\lot\\SocialNetwork.WebApi\\SocialNetwork.BLL\\SocialNetwork.BLL.csproj": {}
+    "C:\\Users\\Katya\\Desktop\\SocialNetwork.WebApi\\SocialNetwork.BLL\\SocialNetwork.BLL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Katya\\Desktop\\lot\\SocialNetwork.WebApi\\SocialNetwork.BLL\\SocialNetwork.BLL.csproj": {
+    "C:\\Users\\Katya\\Desktop\\SocialNetwork.WebApi\\SocialNetwork.BLL\\SocialNetwork.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Katya\\Desktop\\lot\\SocialNetwork.WebApi\\SocialNetwork.BLL\\SocialNetwork.BLL.csproj",
+        "projectUniqueName": "C:\\Users\\Katya\\Desktop\\SocialNetwork.WebApi\\SocialNetwork.BLL\\SocialNetwork.BLL.csproj",
         "projectName": "SocialNetwork.BLL",
-        "projectPath": "C:\\Users\\Katya\\Desktop\\lot\\SocialNetwork.WebApi\\SocialNetwork.BLL\\SocialNetwork.BLL.csproj",
+        "projectPath": "C:\\Users\\Katya\\Desktop\\SocialNetwork.WebApi\\SocialNetwork.BLL\\SocialNetwork.BLL.csproj",
         "packagesPath": "C:\\Users\\Katya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Katya\\Desktop\\lot\\SocialNetwork.WebApi\\SocialNetwork.BLL\\obj\\",
+        "outputPath": "C:\\Users\\Katya\\Desktop\\SocialNetwork.WebApi\\SocialNetwork.BLL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Katya\\Desktop\\lot\\SocialNetwork.WebApi\\SocialNetwork.DAL\\SocialNetwork.DAL.csproj": {
-                "projectPath": "C:\\Users\\Katya\\Desktop\\lot\\SocialNetwork.WebApi\\SocialNetwork.DAL\\SocialNetwork.DAL.csproj"
+              "C:\\Users\\Katya\\Desktop\\SocialNetwork.WebApi\\SocialNetwork.DAL\\SocialNetwork.DAL.csproj": {
+                "projectPath": "C:\\Users\\Katya\\Desktop\\SocialNetwork.WebApi\\SocialNetwork.DAL\\SocialNetwork.DAL.csproj"
               }
             }
           }
@@ -81,14 +81,14 @@
         }
       }
     },
-    "C:\\Users\\Katya\\Desktop\\lot\\SocialNetwork.WebApi\\SocialNetwork.DAL\\SocialNetwork.DAL.csproj": {
+    "C:\\Users\\Katya\\Desktop\\SocialNetwork.WebApi\\SocialNetwork.DAL\\SocialNetwork.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Katya\\Desktop\\lot\\SocialNetwork.WebApi\\SocialNetwork.DAL\\SocialNetwork.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\Katya\\Desktop\\SocialNetwork.WebApi\\SocialNetwork.DAL\\SocialNetwork.DAL.csproj",
         "projectName": "SocialNetwork.DAL",
-        "projectPath": "C:\\Users\\Katya\\Desktop\\lot\\SocialNetwork.WebApi\\SocialNetwork.DAL\\SocialNetwork.DAL.csproj",
+        "projectPath": "C:\\Users\\Katya\\Desktop\\SocialNetwork.WebApi\\SocialNetwork.DAL\\SocialNetwork.DAL.csproj",
         "packagesPath": "C:\\Users\\Katya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Katya\\Desktop\\lot\\SocialNetwork.WebApi\\SocialNetwork.DAL\\obj\\",
+        "outputPath": "C:\\Users\\Katya\\Desktop\\SocialNetwork.WebApi\\SocialNetwork.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

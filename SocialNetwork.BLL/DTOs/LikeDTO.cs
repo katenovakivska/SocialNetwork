@@ -9,6 +9,7 @@ namespace SocialNetwork.BLL.DTOs
         public int LikeId { get; set; }
         public DateTime LikeDate { get; set; }
         public string UserName { get; set; }
+        public int PublicationId { get; set; }
         public PublicationDTO Publication { get; set; }
     }
 }
