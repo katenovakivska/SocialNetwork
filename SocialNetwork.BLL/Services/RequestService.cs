@@ -28,6 +28,14 @@ namespace SocialNetwork.BLL.Services
                 return _mapper.Map<IEnumerable<RequestDTO>>(requests);
             }
 
+            public RequestDTO GetFriendRequest(string userName, string friendName)
+            {
+                var request = _uow.RequestRepository.GetAll()
+                .Where(x => x.ReceiverName == userName && x.UserName == friendName).FirstOrDefault();
+
+                return _mapper.Map<RequestDTO>(request);
+            }
+
             public IEnumerable<RequestDTO> GetAllByRequestId(int requestId)
             {
                 var requests = _uow.RequestRepository.GetAll()

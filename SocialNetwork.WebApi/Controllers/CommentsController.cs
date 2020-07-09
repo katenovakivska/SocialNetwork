@@ -54,7 +54,7 @@ namespace SocialNetwork.PL.Controllers
         {
             var commentDtos = _commentService.GetAll().Where(x => x.PublicationId == id);
 
-            List<UserCommentViewModel> comments = new List<UserCommentViewModel>();
+            List<CommentViewModel> comments = new List<CommentViewModel>();
 
             if (commentDtos == null)
             {
@@ -64,21 +64,26 @@ namespace SocialNetwork.PL.Controllers
             foreach (var comment in commentDtos)
             {
                 var user = _userManager.Users.Where(x => x.UserName == comment.UserName).FirstOrDefault();
-                UserCommentViewModel userCommentViewModel = new UserCommentViewModel();
-                userCommentViewModel.UserName = user.UserName;
-                userCommentViewModel.CommentDate = comment.CommentDate;
-                userCommentViewModel.CommentText = comment.CommentText;
-                userCommentViewModel.CommentId = comment.CommentId;
+                CommentViewModel commentViewModel = new CommentViewModel();
+                commentViewModel = _mapper.Map<CommentViewModel>(comment);
+                commentViewModel.Owner = new UserViewModel();
+                
                 if (user.Avatar != null)
                 {
-                    string imageBase64Data = Convert.ToBase64String(user.Avatar);
-                    string imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
-                    userCommentViewModel.Avatar = imageDataURL;
+                    commentViewModel.Owner.Avatar = ConvertPicture(user.Avatar);
                 }
-                comments.Add(userCommentViewModel);
+                comments.Add(commentViewModel);
             }
 
             return Ok(comments);
+        }
+
+        private string ConvertPicture(byte[] picture)
+        {
+            string imageBase64Data = Convert.ToBase64String(picture);
+            string imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
+
+            return imageDataURL;
         }
 
         [Authorize]

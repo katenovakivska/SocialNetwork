@@ -39,7 +39,6 @@ namespace SocialNetwork.PL.Controllers
                 PhoneNumber = registrationViewModel.PhoneNumber,
                 Email = registrationViewModel.Email,
             };
-
             var result = await _userManager.CreateAsync(user, registrationViewModel.Password);
 
             if (!result.Succeeded)
@@ -53,6 +52,7 @@ namespace SocialNetwork.PL.Controllers
         [HttpPost("token")]
         public async Task<IActionResult> GetToken([FromBody] LoginViewModel login)
         {
+            
             var user = await _userManager.FindByEmailAsync(login.Email);
             if (user == null || !(await _userManager.CheckPasswordAsync(user, login.Password)))
             {
@@ -115,7 +115,6 @@ namespace SocialNetwork.PL.Controllers
 
             user.Email = userViewModel.Email;
             user.PhoneNumber = userViewModel.PhoneNumber;
-            user.PasswordHash = userViewModel.Password;
 
             var result = await _userManager.UpdateAsync(user);
 
@@ -127,30 +126,6 @@ namespace SocialNetwork.PL.Controllers
             return NoContent();
         }
 
-        [Authorize]
-        [HttpGet("users")]
-        public IActionResult GetAllUsers()
-        {
-            var users = _userManager.Users.Where(x => x.UserName != User.Identity.Name);
-
-            List<UserViewModel> usersViewModel = new List<UserViewModel>();
-
-            foreach(var u in users)
-            {
-                UserViewModel user = new UserViewModel();
-                user.UserName = u.UserName;
-                user.Email = u.Email;
-                user.PhoneNumber = u.PhoneNumber;
-                if (u.Avatar != null)
-                {
-                    string imageBase64Data = Convert.ToBase64String(u.Avatar);
-                    string imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
-                    user.Avatar = imageDataURL;
-                }
-                usersViewModel.Add(user);
-            }
-            return Ok(users);
-        }
-
+        
     }
 }

@@ -8,8 +8,6 @@ namespace SocialNetwork.PL.MapperProfile
     {
         public WebAPIAutoMapperProfile()
         {
-            //CreateTwoWaysMap<UserDTO, UserViewModel>();
-            //CreateTwoWaysMap<UserDTO, RegistrationViewModel>();
             CreateTwoWaysMap<PublicationDTO, PublicationViewModel>();
             CreateTwoWaysMap<CommentDTO, CommentViewModel>();
             CreateTwoWaysMap<LikeDTO, LikeViewModel>();

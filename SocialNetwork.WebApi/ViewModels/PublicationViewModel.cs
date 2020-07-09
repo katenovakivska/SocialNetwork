@@ -12,6 +12,7 @@ namespace SocialNetwork.PL.ViewModels
         public DateTime PublicationDate { get; set; }
         public string UserName { get; set; }
         public ICollection<CommentViewModel> Comments { get; set; }
-        public ICollection<LikeViewModel> Likes { get; set; }
+        public virtual ICollection<LikeViewModel> Likes { get; set; }
+        public virtual UserViewModel Owner { get; set; }
     }
 }

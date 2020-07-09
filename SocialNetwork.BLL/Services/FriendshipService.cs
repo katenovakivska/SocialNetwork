@@ -30,6 +30,14 @@ namespace SocialNetwork.BLL.Services
             return _mapper.Map<IEnumerable<FriendshipDTO>>(friendships);
         }
 
+        public IEnumerable<FriendshipDTO> GetAllFriends(string userName)
+        {
+            var friendships = _uow.FriendshipRepository.GetAll()
+                .Where(x => x.FriendName == userName || x.UserName == userName).ToList();
+
+            return _mapper.Map<IEnumerable<FriendshipDTO>>(friendships);
+        }
+
         public IEnumerable<FriendshipDTO> GetAllByFriendshipId(int friendshipId)
         {
             var friendships = _uow.FriendshipRepository.GetAll()

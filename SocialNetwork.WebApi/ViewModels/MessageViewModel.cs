@@ -12,5 +12,6 @@ namespace SocialNetwork.PL.ViewModels
         public string MessageText { get; set; }
         public DateTime MessageDate { get; set; }
         public string UserName { get; set; }
+        public virtual UserViewModel Sender { get; set; }
     }
 }

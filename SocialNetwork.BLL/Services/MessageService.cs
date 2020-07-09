@@ -28,6 +28,15 @@ namespace SocialNetwork.BLL.Services
             return _mapper.Map<IEnumerable<MessageDTO>>(messages);
         }
 
+        public IEnumerable<MessageDTO> GetChatMessages(string userName, string friendName)
+        {
+            var messages = _uow.MessageRepository.GetAll()
+                .Where(x => (x.UserName == userName && x.ReceiverName == friendName)
+                || (x.UserName == friendName && x.ReceiverName == userName)).ToList();
+
+            return _mapper.Map<IEnumerable<MessageDTO>>(messages);
+        }
+
         public IEnumerable<MessageDTO> GetAllByMessageId(int messageId)
         {
             var messages = _uow.MessageRepository.GetAll()
@@ -50,14 +59,8 @@ namespace SocialNetwork.BLL.Services
                 return null;
             }
 
-            var message = _uow.MessageRepository.Get((int)item.MessageId);
-            if (message == null)
-            {
-                return null;
-            }
-
             var messageDto = _mapper.Map<Message>(item);
-            messageDto = _uow.MessageRepository.Create(message);
+            messageDto = _uow.MessageRepository.Create(messageDto);
 
             _uow.Save();
 

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace SocialNetwork.PL.ViewModels
 {
@@ -9,5 +11,6 @@ namespace SocialNetwork.PL.ViewModels
         public string PhoneNumber { get; set; }
         public string Password { get; set; }
         public string Avatar { get; set; }
+        public virtual ICollection<PublicationViewModel> Publications { get; set; }
     }
 }

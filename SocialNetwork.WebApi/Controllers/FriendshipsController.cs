@@ -21,14 +21,18 @@ namespace SocialNetwork.PL.Controllers
         private IFriendshipService _friendshipService;
         private IRequestService _requestService;
         private IPublicationService _publicationService;
+        private ILikeService _likeService;
+        private ICommentService _commentService;
         private IMapper _mapper;
         private UserManager<ApplicationUser> _userManager;
 
-        public FriendshipsController(UserManager<ApplicationUser> userManager,IFriendshipService friendshipService, IRequestService requestService,IPublicationService publicationService, IMapper mapper)
+        public FriendshipsController(UserManager<ApplicationUser> userManager,IFriendshipService friendshipService, IRequestService requestService,IPublicationService publicationService, IMapper mapper, ILikeService likeService, ICommentService commentService)
         {
             _userManager = userManager;
             _friendshipService = friendshipService;
             _publicationService = publicationService;
+            _likeService = likeService;
+            _commentService = commentService;
             _mapper = mapper;
             _requestService = requestService;
         }
@@ -40,7 +44,7 @@ namespace SocialNetwork.PL.Controllers
         {
             IEnumerable<FriendshipDTO> friendshipDtos;
 
-            friendshipDtos = _friendshipService.GetAll().Where(x => x.FriendName == User.Identity.Name || x.UserName == User.Identity.Name);
+            friendshipDtos = _friendshipService.GetAllFriends(User.Identity.Name);
             List<UserViewModel> friends = new List<UserViewModel>();
             foreach (var f in friendshipDtos)
             {
@@ -57,16 +61,14 @@ namespace SocialNetwork.PL.Controllers
                 userViewModel.Email = friend.Email;
                 userViewModel.UserName = friend.UserName;
                 userViewModel.PhoneNumber = friend.PhoneNumber;
-                userViewModel.Password = friend.PasswordHash;
+                
                 if (friend.Avatar != null)
                 {
-                    string imageBase64Data = Convert.ToBase64String(friend.Avatar);
-                    string imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
-                    userViewModel.Avatar = imageDataURL;
+                    userViewModel.Avatar = ConvertPicture(friend.Avatar);
                 }
                 friends.Add(userViewModel);
             }
-            return Ok(_mapper.Map<IEnumerable<UserViewModel>>(friends));
+            return Ok(friends);
 
         }
 
@@ -75,16 +77,12 @@ namespace SocialNetwork.PL.Controllers
         public IActionResult CreateFriendship([FromBody] FriendshipViewModel friendshipViewModel)
         {
             var friendshipDto = _mapper.Map<FriendshipDTO>(friendshipViewModel);
-            friendshipDto.UserName = User.Identity.Name;
-            friendshipDto.FriendName = friendshipViewModel.FriendName;
 
             friendshipDto = _friendshipService.Create(friendshipDto);
 
-            RequestDTO requestDto = _requestService.GetAll().Where(x => x.ReceiverName == User.Identity.Name && x.UserName == friendshipViewModel.FriendName).FirstOrDefault();
+            RequestDTO requestDto = _requestService.GetFriendRequest(User.Identity.Name, friendshipViewModel.FriendName);
             requestDto.Status = "confirmed";
-
             requestDto = _requestService.Update(requestDto.RequestId, requestDto);
-
 
             if (friendshipDto == null)
             {
@@ -107,9 +105,7 @@ namespace SocialNetwork.PL.Controllers
 
             if (user.Avatar != null)
             {
-                string imageBase64Data = Convert.ToBase64String(user.Avatar);
-                string imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
-                userViewModel.Avatar = imageDataURL;
+                userViewModel.Avatar = ConvertPicture(user.Avatar);
             }
 
             return Ok(userViewModel);
@@ -125,27 +121,52 @@ namespace SocialNetwork.PL.Controllers
 
             List<PublicationViewModel> publications = new List<PublicationViewModel>();
 
-            foreach (var p in publicationDtos)
+            foreach (var p in publicationDtos.Reverse())
             {
+                var publication = _mapper.Map<PublicationViewModel>(p);
+                var likesDtos = _likeService.GetAll().Where(x => x.PublicationId == p.PublicationId);
+                var commentDtos = _commentService.GetAll().Where(x => x.PublicationId == p.PublicationId);
+                publication.Likes = new List<LikeViewModel>();
+                publication.Comments = new List<CommentViewModel>();
                 if (p.Photo != null)
                 {
-                    string imageBase64Data = Convert.ToBase64String(p.Photo);
-                    string imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
-                    PublicationViewModel publication = new PublicationViewModel();
-                    publication.PublicationId = p.PublicationId;
-                    publication.PublicationDate = p.PublicationDate;
-                    publication.PublicationText = p.PublicationText;
-                    publication.UserName = p.UserName;
-                    publication.Photo = imageDataURL;
-                    publication.Likes = _mapper.Map<ICollection<LikeViewModel>>(p.Likes);
-                    publication.Comments = _mapper.Map<ICollection<CommentViewModel>>(p.Comments);
-
-                    publications.Add(publication);
+                    publication.Photo = ConvertPicture(p.Photo);
                 }
-
+                foreach (var l in likesDtos)
+                {
+                    var like = _mapper.Map<LikeViewModel>(l);
+                    var user = _userManager.Users.Where(x => x.UserName == l.UserName).FirstOrDefault();
+                    like.Owner = new UserViewModel();
+                    if (user.Avatar != null)
+                    {
+                        like.Owner.Avatar = ConvertPicture(user.Avatar);
+                    }
+                    publication.Likes.Add(like);
+                }
+                foreach (var c in commentDtos)
+                {
+                    var comment = _mapper.Map<CommentViewModel>(c);
+                    var user = _userManager.Users.Where(x => x.UserName == c.UserName).FirstOrDefault();
+                    comment.Owner = new UserViewModel();
+                    if (user.Avatar != null)
+                    {
+                        comment.Owner.Avatar = ConvertPicture(user.Avatar);
+                    }
+                    publication.Comments.Add(comment);
+                }
+                publications.Add(publication);
             }
 
             return Ok(_mapper.Map<List<PublicationViewModel>>(publications));
         }
+
+        private string ConvertPicture(byte[] picture)
+        {
+            string imageBase64Data = Convert.ToBase64String(picture);
+            string imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
+
+            return imageDataURL;
+        }
+
     }
 }

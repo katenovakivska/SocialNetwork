@@ -11,5 +11,7 @@ namespace SocialNetwork.PL.ViewModels
         public string ReceiverName { get; set; }
         public string Status { get; set; }
         public string UserName { get; set; }
+        public virtual UserViewModel Sender { get; set; }
+        public virtual UserViewModel Receiver { get; set; }
     }
 }

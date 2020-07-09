@@ -7,5 +7,6 @@ namespace SocialNetwork.BLL.Interfaces
 {
     public interface IRequestService : ICRUDService<RequestDTO>
     {
+        RequestDTO GetFriendRequest(string userName, string friendName);
     }
 }

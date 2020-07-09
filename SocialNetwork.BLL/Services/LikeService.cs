@@ -27,7 +27,13 @@ namespace SocialNetwork.BLL.Services
 
             return _mapper.Map<IEnumerable<LikeDTO>>(likes);
         }
+        public LikeDTO GetLike(int publicationId, string userName)
+        {
+            var like = _uow.LikeRepository.GetAll()
+                .Where(x => x.PublicationId == publicationId && x.UserName == userName).FirstOrDefault();
 
+            return _mapper.Map<LikeDTO>(like);
+        }
         public IEnumerable<LikeDTO> GetAllByLikeId(int likeId)
         {
             var likes = _uow.LikeRepository.GetAll()

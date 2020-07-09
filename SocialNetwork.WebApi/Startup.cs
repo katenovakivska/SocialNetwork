@@ -68,9 +68,9 @@ namespace SocialNetwork.PL
                         IssuerSigningKey = JwtAuthOptions.GetSymmetricSecurityKey()
                     };
                 });
+            
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors("CorsPolicy");
@@ -101,75 +101,6 @@ namespace SocialNetwork.PL
                 endpoints.MapControllers();
             });
         }
-        //public Startup(IConfiguration configuration)
-        //{
-        //    Configuration = configuration;
-        //}
-
-        //public IConfiguration Configuration { get; }
-
-        //// This method gets called by the runtime. Use this method to add services to the container.
-        //public void ConfigureServices(IServiceCollection services)
-        //{
-
-        //    services.AddCors(options =>
-        //    {
-        //        options.AddPolicy(
-        //            "CorsPolicy",
-        //            builder => builder.WithOrigins("http://localhost:4200")
-        //                .AllowAnyMethod()
-        //                .AllowAnyHeader()
-        //                .AllowCredentials());
-        //    });
-
-        //    services.AddControllers().AddNewtonsoftJson(config => config.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
-        //    services.AddAutoMapper(typeof(BLLAutoMapperProfile), typeof(WebAPIAutoMapperProfile));
-
-        //    var connectionString = Configuration.GetConnectionString("DefaultConnection");
-        //    InjectionResolver.ConfigureServices(services, connectionString);
-
-        //    services.AddAuthentication(options =>
-        //    {
-        //        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        //        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        //        options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-        //    })
-        //        .AddJwtBearer(options =>
-        //        {
-        //            options.SaveToken = true;
-        //            options.RequireHttpsMetadata = false;
-        //            options.TokenValidationParameters = new TokenValidationParameters()
-        //            {
-        //                ValidateIssuer = false,
-        //                ValidateAudience = false,
-        //                IssuerSigningKey = JwtAuthOptions.GetSymmetricSecurityKey()
-        //            };
-        //        });
-
-        //}
-
-        //// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        //public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        //{
-        //    app.UseCors("CorsPolicy");
-
-        //    if (env.IsDevelopment())
-        //    {
-        //        app.UseDeveloperExceptionPage();
-        //    }
-
-        //    app.UseHttpsRedirection();
-
-        //    app.UseRouting();
-
-        //    app.UseAuthentication();
-
-        //    app.UseAuthorization();
-
-        //    app.UseEndpoints(endpoints =>
-        //    {
-        //        endpoints.MapControllers();
-        //    });
-        //}
+        
     }
 }

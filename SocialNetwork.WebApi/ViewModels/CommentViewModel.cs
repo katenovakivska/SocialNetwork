@@ -13,5 +13,6 @@ namespace SocialNetwork.PL.ViewModels
         public string UserName { get; set; }
         public int PublicationId { get; set; }
         public virtual PublicationViewModel Publication { get; set; }
+        public virtual UserViewModel Owner { get; set; }
     }
 }

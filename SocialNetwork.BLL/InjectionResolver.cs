@@ -19,17 +19,7 @@ namespace SocialNetwork.BLL
                             .UseSqlServer(connectionString)
                 );
 
-            //services
-            //    .AddIdentityCore<ApplicationUser>(opts =>
-            //    {
-            //        opts.User.RequireUniqueEmail = true;
-            //        opts.Password.RequiredLength = 8;
-            //        opts.Password.RequireNonAlphanumeric = false;
-            //        opts.Password.RequireLowercase = true;
-            //        opts.Password.RequireUppercase = false;
-            //        opts.Password.RequireDigit = true;
-            //    })
-            //    .AddEntityFrameworkStores<NetworkContext>();
+            
             services
                 .AddIdentityCore<ApplicationUser>()
                 .AddEntityFrameworkStores<NetworkContext>();
